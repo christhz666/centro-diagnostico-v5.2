@@ -147,6 +147,7 @@ const ConsultaRapida = () => {
         const pacienteId = pacienteEncontrado._id || pacienteEncontrado.id;
         const resResponse = await api.getResultados({ paciente: pacienteId, limit: 5 });
         const allResults = Array.isArray(resResponse) ? resResponse : (resResponse.data || resResponse || []);
+        
         // For barcode search, show only the most recent order's results
         if (allResults.length > 0) {
           const latestCita = allResults[0].cita;
@@ -157,14 +158,6 @@ const ConsultaRapida = () => {
             });
             setResultados(latestResults);
           } else {
-            setResultados(allResults.slice(0, 1));
-          }
-        } else {
-          setResultados([]);
-        }
-setResultados(latestResults);
-          } else {
-            // If no cita reference, show only the most recent result
             setResultados(allResults.slice(0, 1));
           }
         } else {
