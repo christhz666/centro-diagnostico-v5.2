@@ -162,12 +162,7 @@ const ConsultaRapida = () => {
         } else {
           setResultados([]);
         }
-      } catch (e) {
-        setResultados([]);
-      }
-    } catch (err) {
-      setError('Error: ' + err.message);
-            setResultados(latestResults);
+setResultados(latestResults);
           } else {
             // If no cita reference, show only the most recent result
             setResultados(allResults.slice(0, 1));
@@ -185,6 +180,7 @@ const ConsultaRapida = () => {
       setLoading(false);
     }
   };
+
 
   const limpiar = () => {
     setCodigo('');
